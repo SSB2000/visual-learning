@@ -1,0 +1,76 @@
+*,
+*::before,
+*::after {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+	font-size: 16px;
+}
+
+:root {
+	--primary-clr: hsl(0, 0%, 100%);
+}
+
+body, html {
+	// font-family: Gill Sans, 'Gill Sans MT', 'Calibri', 'Trebuchet MS', 
+	font-family: sans-serif;
+	background-color: white;;
+	background-image: url('../music-notes.jpg');
+	background-repeat: no-repeat;
+	background-size: cover;
+}
+
+.container {
+	width: 100%;
+	height: 100%;
+	overflow: hidden;
+	text-align: center;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction: column;
+	padding: 3em 3em;
+	h1 {
+		background-color: rgb(55, 55, 55);
+		padding: 0 1em;
+		font-size: 2.5em;
+		margin-bottom: 1em;
+		color: var(--primary-clr);
+	}
+}
+
+.keys {
+	width: 80%;
+	margin: 0 auto;
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(5em, 1fr));
+	grid-template-rows: repeat(3, 5em);
+	grid-gap: 1em;
+	.A {
+		grid-column-start: 2;
+	}
+	.Z {
+		grid-column-start: 2;
+	}
+}
+
+
+.key {
+	border:hsl(0, 100%, 86%) 2px solid;
+	border-radius: 5px;
+	background: hsla(0, 0%, 28%, 0.583);
+	padding-top: .6em;
+	transition: all 0.04s;
+	kbd {
+		display: block;
+		height: 100%;
+		font-size: 3em;
+	}
+}
+
+.playing {
+	background-color: hsl(0, 0%, 100%);
+	transform: scale(1.15);
+	border: 5px solid rgb(255, 241, 191);
+	box-shadow: 0 0 10px #ffc600;
+}
