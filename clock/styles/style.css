@@ -1,0 +1,106 @@
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  -webkit-box-sizing: 0;
+          box-sizing: 0;
+}
+
+html {
+  height: 100%;
+  font-size: 16px;
+  background-color: lightblue;
+}
+
+body {
+  height: 100%;
+  display: -ms-grid;
+  display: grid;
+  place-items: center;
+}
+
+.clock {
+  width: 20em;
+  height: 20em;
+  background-color: gray;
+  border-radius: 50%;
+  border: .5em solid black;
+  -webkit-box-shadow: 0 0 0 4px rgba(0, 0, 0, 0.1), inset 0 0 0 3px #EFEFEF, inset 0 0 10px black, 0 0 10px rgba(0, 0, 0, 0.2);
+          box-shadow: 0 0 0 4px rgba(0, 0, 0, 0.1), inset 0 0 0 3px #EFEFEF, inset 0 0 10px black, 0 0 10px rgba(0, 0, 0, 0.2);
+  position: relative;
+}
+
+.clock .clock-face {
+  background-color: white;
+  width: calc(100% -  16px);
+  height: calc(100% - 16px);
+  border-radius: 50%;
+  top: 8px;
+  right: -8px;
+  position: relative;
+  -webkit-transform: rotate(90deg);
+          transform: rotate(90deg);
+}
+
+.clock .clock-face .markings {
+  position: absolute;
+  width: 100%;
+  height: 1px;
+  top: 50%;
+  background-color: rgba(0, 0, 0, 0.261);
+}
+
+.clock .clock-face .mark-5 {
+  -webkit-transform: rotate(30deg);
+          transform: rotate(30deg);
+}
+
+.clock .clock-face .mark-10 {
+  -webkit-transform: rotate(60deg);
+          transform: rotate(60deg);
+}
+
+.clock .clock-face .mark-15 {
+  height: 1px;
+  -webkit-transform: rotate(90deg);
+          transform: rotate(90deg);
+}
+
+.clock .clock-face .mark-20 {
+  -webkit-transform: rotate(120deg);
+          transform: rotate(120deg);
+}
+
+.clock .clock-face .mark-25 {
+  -webkit-transform: rotate(150deg);
+          transform: rotate(150deg);
+}
+
+.clock .clock-face .hand {
+  width: 50%;
+  font-size: 5px;
+  height: .5em;
+  background-color: blue;
+  position: absolute;
+  border-top-left-radius: 10px;
+  -webkit-transform-origin: 100%;
+          transform-origin: 100%;
+  -webkit-transition-timing-function: cubic-bezier(0.1, 2.7, 0.58, 1);
+          transition-timing-function: cubic-bezier(0.1, 2.7, 0.58, 1);
+  top: 50%;
+}
+
+.clock .clock-face .hour-hand {
+  width: 40%;
+  height: .8em;
+  background-color: red;
+  border-bottom-right-radius: 5px;
+  left: 10%;
+}
+
+.clock .clock-face .sec-hand {
+  height: .4em;
+  background-color: rgba(0, 0, 0, 0.844);
+}
+/*# sourceMappingURL=style.css.map */

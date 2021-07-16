@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Clock</title>
+	<link rel="stylesheet" href="./styles/style.css" />
+</head>
+<body>
+	<div class="clock">
+		<div class="clock-face">
+			<div class="markings"></div>
+			<div class="markings mark-5"></div>
+			<div class="markings mark-10"></div>
+			<div class="markings mark-15"></div>
+			<div class="markings mark-20 "></div>
+			<div class="markings mark-25"></div>
+			<div class="hand hour-hand"></div>
+			<div class="hand min-hand"></div>
+			<div class="hand sec-hand"></div>
+		</div>
+	</div>
+
+	<script>
+		const secondHand = document.querySelector(".sec-hand");
+		const minuteHand = document.querySelector(".min-hand");
+		const hourHand = document.querySelector(".hour-hand");
+		function setDate() {
+			const now = new Date();
+			const seconds = now.getSeconds();
+			const minutes = now.getMinutes();
+			let hours = now.getHours();
+			const secondDegrees = (seconds / 60) * 360;
+			const minuteDegrees = (minutes / 60) * 360;
+			const hoursDegrees =
+				((hours / 12) * 360) + (minuteDegrees / 13);
+			secondHand.style.transform = `rotate(${secondDegrees}deg)`;
+			minuteHand.style.transform = `rotate(${minuteDegrees}deg)`;
+			hourHand.style.transform = `rotate(${hoursDegrees}deg)`;
+		}
+
+		setInterval(setDate, 1000);
+	</script>
+</body>
+</html>

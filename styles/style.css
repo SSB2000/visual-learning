@@ -1,0 +1,84 @@
+@import url(../Fonts/Fonts/WEB/css/satoshi.css);
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+:root {
+  --base-font-size: 16px;
+  --base-font-clr: black;
+  --github-link-clr: #5167f6;
+  --primary-background-clr: hsl(231, 89%, 93%);
+}
+
+body,
+html {
+  height: 100%;
+  background-color: var(--primary-background-clr);
+  font-size: var(--base-font-size);
+  color: var(--base-font-clr);
+}
+
+.container {
+  padding: 5% 5%;
+}
+
+.container .heading {
+  position: relative;
+  padding-bottom: 3em;
+  border-bottom: 2px solid black;
+}
+
+.container .heading h1 {
+  font-size: 3em;
+  line-height: 1em;
+  font-family: "Satoshi-Bold";
+  margin-bottom: 0.5em;
+}
+
+.container .heading .sub-heading {
+  font-family: "Satoshi-Regular";
+  font-size: 1.6em;
+  line-height: 1.1em;
+}
+
+.container .heading .sub-heading .github-link {
+  color: var(--github-link-clr);
+  text-decoration: none;
+}
+
+.container .heading .author-name {
+  position: absolute;
+  right: 0;
+  font-family: "Satoshi-Light";
+  font-style: italic;
+  font-size: 1.6em;
+  padding-bottom: .4em;
+}
+
+.container .list {
+  font-size: 2em;
+  font-family: 'Satoshi-Medium';
+  margin-top: 2em;
+}
+
+.container .list .list-item {
+  border-bottom: 2px solid black;
+  list-style-type: none;
+  line-height: 1em;
+  margin: .5em 0;
+}
+
+.container .list .list-item .number {
+  font-size: .6em;
+}
+
+.container .list .list-item .link {
+  color: inherit;
+  text-decoration: none;
+}
+/*# sourceMappingURL=style.css.map */
