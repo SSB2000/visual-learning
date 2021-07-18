@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="">
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>p5.js example</title>
+	<style>
+		body {
+			padding: 0;
+			margin: 0;
+			background-color: rgb(158, 158, 158);
+		}
+	</style>
+	<script src="../p5.min.js"></script>
+</head>
+
+<body>
+	<main>
+	</main>
+	<script>
+		var values = [];
+		var elementWidth = 20;
+		var i = 0;
+		var t = 0;
+		var sections = 100;
+		var rectWidth;
+		var flag = 0;
+		function setup() {
+			createCanvas(windowWidth, windowHeight - 50);
+			rectWidth = (windowWidth) / sections;
+			for(let i = 0; i < sections; i++) {
+				values[i] = floor(random(height));
+			}
+			// sort(values);
+		}
+		
+		function draw() {
+			background(0);
+			// stroke(255);
+			fill(255);
+
+			// Make 1 comparison every frame.
+			// Bubble comparison
+			if(values[t] > values[t + 1]) {
+				let temp = values[t];
+				values[t] = values[t + 1];
+				values[t + 1] = temp;
+			}
+
+			if(i < sections) {
+				t++; // Increment t;
+				if(t >= sections - i - 1) {
+					// We get in this condition when largest element is at last for this perticular traversal.
+					t = 0; // Make t = 0 so we start next i iteration.
+					i++; // Increment i;
+				}
+			}
+			else {
+				flag = 1;
+				noLoop();
+			}
+			console.log(`i`, i);
+			// Draw each section for this frame.
+			let j = 0;
+			fill(255);
+			let x = 0;
+			// Draw the unsorted elements which are still not in their place.
+			while(x < width - (i * rectWidth)) {
+				// Drawing a sectino every time of width rectWidth and particular heigth.
+				rect(x, height - values[j], rectWidth, values[j]);
+				x += rectWidth;
+				j++;
+			}
+			
+			// Draw the elements(red) which are now are bubble(at end{hence bubble sort}).
+			while(x < width) {
+				fill(255, 0, 0);
+				// Drawing a sectino every time of width rectWidth and particular heigth.
+				rect(x, height - values[j], rectWidth, values[j]);
+				x += rectWidth;
+				j++;
+			}
+
+			if(flag == 1){
+				let j = 0;
+				let x = 0;
+				while(x < width) {
+					fill(0, 255, 0);
+					// Drawing a sectino every time of width rectWidth and particular heigth.
+					rect(x, height - values[j], rectWidth, values[j]);
+					x += rectWidth;
+					j++;
+				}
+			}
+		}
+	</script>
+</body>
+
+</html>

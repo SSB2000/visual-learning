@@ -24,7 +24,7 @@ html {
 }
 
 .container {
-	padding: 5% 5%;
+	padding: 2% 5%;
 	.heading {
 		position: relative;
 		padding-bottom: 3em;
@@ -68,6 +68,7 @@ html {
 			line-height: 1em;
 			margin: .5em 0;
 			.number {
+				color: hsl(227, 20%, 33%);
 				font-size: .6em;
 			}
 

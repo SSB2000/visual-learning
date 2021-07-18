@@ -24,7 +24,7 @@ html {
 }
 
 .container {
-  padding: 5% 5%;
+  padding: 2% 5%;
 }
 
 .container .heading {
@@ -74,6 +74,7 @@ html {
 }
 
 .container .list .list-item .number {
+  color: #434b65;
   font-size: .6em;
 }
 
