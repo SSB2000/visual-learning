@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=windowWidth, initial-scale=1.0">
+	<title>Quick Sort - Hoare Partition</title>
+	<style>
+		* {
+			margin: 0;
+			padding: 0;
+			box-sizing: border-box;
+		}
+
+		body {
+			background-color:black;
+		}
+	</style>
+</head>
+
+<body>
+	<main>
+	</main>
+	<script src="../p5.min.js"></script>
+	<script>
+		let rWidth = 5;
+		let states = [];
+		function setup() {
+			pixelDensity(1);
+			createCanvas(windowWidth - 10, windowHeight - 50);
+			values = new Array(floor(width / rWidth));
+			for (let i = 0; i < values.length; i++) {
+				values[i] = random(height);
+				states[i] = -1;
+			}
+			// sort(values);
+			quickSort(values, 0, values.length - 1);
+		}
+
+		function draw() {
+			background(0);
+			fill(255);
+			if(arraySortedOrNot(values, values.length)) {
+				noStroke();
+				fill(0, 255, 0);
+			}
+			for (let i = 0; i < values.length; i++) {
+				rect(i * rWidth, height - values[i], rWidth, values[i]);
+			}
+		}
+
+		function arraySortedOrNot(arr, n) {
+			if (n == 1 || n == 0)
+				return 1;
+
+			// Unsorted pair found (Equal values allowed)
+			if (arr[n - 1] < arr[n - 2])
+				return 0;
+			return arraySortedOrNot(arr, n - 1);
+		}
+
+		async function quickSort(arr, left, right) {
+			if (left < right) {
+				const index = await partition(arr, left, right);
+				await Promise.all([
+					quickSort(arr, left, index),
+					quickSort(arr, index + 1, right)
+				]);
+			}
+		}
+
+
+		// Find and return the position of the pivot element.
+		async function partition(arr, left, right) {
+			// Choosing middle element as pivot.
+			const pivot = arr[Math.floor((left + right) / 2)];
+			while (true) {
+
+				// Finding 1st largest element than pivot from the left.
+				while (arr[left] < pivot) {
+					left++;
+				}
+
+				// Finding first smaller element than pivot from right.
+				while (arr[right] > pivot) {
+					right--;
+				}
+
+				// If all the element are traversed the we return the last travered rigth index.
+				if (left >= right) {
+					return right;
+				}
+
+				// Swap the larger value from left to smaller value from right.
+				await swap(arr, left, right);
+			}
+		}
+
+
+		// Swap the elements indexed i and j in array arr.
+		async function swap(arr, i, j) {
+			// Take a break of 200ms, as computers are too fast.
+			await new Promise(r => setTimeout(r, 0));
+			const tmp = arr[i];
+			arr[i] = arr[j];
+			arr[j] = tmp;
+		}
+	</script>
+</body>
+
+</html>
