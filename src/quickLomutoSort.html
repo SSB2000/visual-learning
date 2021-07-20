@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="">
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Quick(Lomuto) sort.</title>
+	<style>
+		body {
+			padding: 0;
+			margin: 0;
+			box-sizing: border-box;
+			background-color:black;
+		}
+	</style>
+	<script src="../p5.min.js"></script>
+</head>
+
+<body>
+	<main>
+	</main>
+
+	<script>
+		let w = 5;
+		// Setup function.
+		function setup() {
+			pixelDensity(1);
+			createCanvas(windowWidth, windowHeight - 50);
+			values = new Array(floor(width / w));
+			for (let i = 0; i < values.length; i++) {
+				values[i] = random(height);
+			}
+			quickSort(values, 0, values.length - 1);
+		}
+
+		// Draw loop function.
+		function draw() {
+			background(0);
+			fill(255);
+			if(arraySortedOrNot(values, values.length)) {
+				noStroke();
+				fill(0, 255, 0);
+			}
+			for (let i = 0; i < values.length; i++) {
+				rect(i * w, height - values[i], w, values[i]);
+			}
+		}
+
+		function arraySortedOrNot(arr, n) {
+			if (n == 1 || n == 0)
+				return 1;
+
+			// Unsorted pair found (Equal values allowed)
+			if (arr[n - 1] < arr[n - 2])
+				return 0;
+			return arraySortedOrNot(arr, n - 1);
+		}
+
+		// Quick Sort recursive loop.
+		async function quickSort(arr, start, end) {
+			if (start >= end) return;
+
+			// Find the index of the now correctly positioned element{where left and right side are still to sorted.}
+			let index = await partition(arr, start, end);
+
+			// Quick sort the left side unsorted array from the index.
+			// Quick sort the right side unsorted array from the index.
+			await Promise.all([
+				quickSort(arr, start, index - 1),
+				quickSort(arr, index + 1, end)
+			]);
+			
+		}
+
+		// Partition function that returns the pivot index.
+		async function partition(arr, start, end) {
+			// Start comparing from the beginning.
+			let pivotIndex = start;
+
+			// Set the pivot element at end every time to compare.
+			let pivotValue = arr[end];
+			for (let i = start; i < end; i++) {
+				// If the current element is smaller than pivot element than swap it will pivotIndex element.
+				if (arr[i] < pivotValue) {
+					await swap(arr, i, pivotIndex);
+					pivotIndex++;
+				}
+			}
+
+			// Swap the pivotIndex element with pivot element.
+			await swap(arr, pivotIndex, end);
+
+			return pivotIndex;
+		}
+
+
+		// Swap function to swap the element of array indexed a and b.
+		async function swap(arr, a, b) {
+			await new Promise(r => setTimeout(r, 0));
+			let temp = arr[a];
+			arr[a] = arr[b];
+			arr[b] = temp;
+		}
+	</script>
+</body>
+
+</html>
