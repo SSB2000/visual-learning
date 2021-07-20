@@ -23,6 +23,12 @@ html {
   color: var(--base-font-clr);
 }
 
+@media only screen and (max-width: 600px) {
+  body {
+    font-size: 10px;
+  }
+}
+
 .container {
   padding: 2% 5%;
 }
