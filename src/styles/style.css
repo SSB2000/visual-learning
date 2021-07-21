@@ -1,0 +1,30 @@
+@import url(../../Fonts/Fonts/WEB/css/satoshi.css);
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+:root {
+  --base-font-size: 16px;
+  --base-font-clr: rgb(255, 255, 255);
+  --primary-background-clr: #0974AF;
+}
+
+body,
+html {
+  background-color: var(--primary-background-clr);
+  text-align: center;
+  font-family: "Satoshi-Bold";
+  color: var(--base-font-clr);
+}
+
+@media only screen and (max-width: 600px) {
+  body {
+    font-size: 12px;
+  }
+}
+/*# sourceMappingURL=style.css.map */
