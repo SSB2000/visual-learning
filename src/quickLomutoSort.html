@@ -5,18 +5,13 @@
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>Quick(Lomuto) sort.</title>
-	<style>
-		body {
-			padding: 0;
-			margin: 0;
-			box-sizing: border-box;
-			background-color:black;
-		}
-	</style>
+	<link rel="stylesheet" href="./styles/style.css">
+
 	<script src="../p5.min.js"></script>
 </head>
 
 <body>
+	<h1 class="page-heading">Quick(Lomuto) Sort Visualization.</h1>
 	<main>
 	</main>
 
@@ -25,7 +20,7 @@
 		// Setup function.
 		function setup() {
 			pixelDensity(1);
-			createCanvas(windowWidth, windowHeight - 50);
+			createCanvas(windowWidth - 30, windowHeight - 70);
 			values = new Array(floor(width / w));
 			for (let i = 0; i < values.length; i++) {
 				values[i] = random(height);

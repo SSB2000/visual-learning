@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Selectin Sort</title>
+	<script src="../p5.min.js"></script>
+	<link rel="stylesheet" href="./styles/style.css">
+</head>
+<body>
+	<h1 class="page-heading">Selection Sort Visualization.</h1>
+	<main>
+	</main>
+
+	<script>
+		var values = [];
+		var sections;
+		var sectionW = 3;
+		var section;
+		var isSorted = false;
+		function setup() {
+			pixelDensity(1);
+			createCanvas(windowWidth - 30, windowHeight - 70);
+			createCanvas(windowWidth - 30, windowHeight - 70);
+			sections = Math.floor(width / sectionW);
+			for(let i = 0; i < sections; i++) {
+				let value = Math.floor(random(height));
+				values[i] = new section(value, i);
+			}
+			quickSort(values);
+		}
+		function draw() {
+			background(0);
+			for(let i = 0; i < values.length; i++) {
+				values[i].show(i);
+			}
+		}
+		section = function(value, i) {
+			this.value = value;
+			this.color = color(255, 255, 255);
+			this.show = function(i) {
+				stroke(1);
+				if(isSorted) noStroke();
+				fill(this.color);
+				rect(i * sectionW, height - this.value, sectionW, this.value);
+			}
+		}
+		async function quickSort(arr) {
+			let i, current;
+			let length = arr.length;
+			for(i = 0; i < length - 1; i++) {
+				let min = i;
+				for(current = i + 1; current < length; current++) {
+					if(arr[current].value < arr[min].value) {
+						min = current;
+					}
+				}
+				if(min != i) {
+					await swap(arr, i, min);
+					values[i].color = color(255, 0, 0);
+				}
+			}
+			isSorted = true;
+			for(let i = 0; i < values.length; i++) {
+				values[i].color = color(0, 255, 0);
+			}
+			noLoop();
+		}
+		async function swap(arr, a, b) {
+			await new Promise(r => setTimeout(r, 5));
+			temp = arr[b];
+			arr[b] = arr[a];
+			arr[a] = temp;
+		}
+	</script>
+</body>
+</html>

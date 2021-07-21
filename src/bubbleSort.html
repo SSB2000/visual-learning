@@ -5,30 +5,25 @@
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>Bubble Sort Visualization.</title>
-	<style>
-		body {
-			padding: 0;
-			margin: 0;
-			background-color: black;
-		}
-	</style>
+	<link rel="stylesheet" href="./styles/style.css">
 	<script src="../p5.min.js"></script>
 </head>
 
 <body>
+	<h1 class="page-heading">Bubble Sort Visualization.</h1>
 	<main>
 	</main>
 	<script>
 		var i = 0;
 		var t = 0;
-		var sections = 60;
-		var rectWidth;
+		var sections;
+		var sectionW = 30;
 		var flag = 0;
 		function setup() {
-			pixelDensity(1);
-			createCanvas(windowWidth, windowHeight - 50);
-			rectWidth = (windowWidth) / sections;
-			values = new Array(floor(width / rectWidth));
+			pixelDensity(1); 
+			createCanvas(windowWidth - 30, windowHeight - 70);
+			sections = Math.floor(width / sectionW);
+			values = new Array(floor(width / sectionW));
 			for (let i = 0; i < sections; i++) {
 				values[i] = floor(random(height));
 			}
@@ -56,6 +51,7 @@
 				}
 			}
 			else {
+				noStroke();
 				flag = 1;
 				noLoop();
 			}
@@ -66,9 +62,9 @@
 			let x = 0;
 			// Draw the unsorted elements which are still not in their place.
 			while (x < width) {
-				// Drawing a sectino every time of width rectWidth and particular heigth.
-				rect(x, height - values[j], rectWidth, values[j]);
-				x += rectWidth;
+				// Drawing a sectino every time of width sectionW and particular heigth.
+				rect(x, height - values[j], sectionW, values[j]);
+				x += sectionW;
 				j++;
 			}
 
@@ -77,9 +73,9 @@
 				let x = 0;
 				while (x < width) {
 					fill(0, 255, 0);
-					// Drawing a sectino every time of width rectWidth and particular heigth.
-					rect(x, height - values[j], rectWidth, values[j]);
-					x += rectWidth;
+					// Drawing a sectino every time of width sectionW and particular heigth.
+					rect(x, height - values[j], sectionW, values[j]);
+					x += sectionW;
 					j++;
 				}
 			}
