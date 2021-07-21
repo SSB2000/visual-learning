@@ -6,29 +6,21 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=windowWidth, initial-scale=1.0">
 	<title>Quick Sort - Hoare Partition</title>
-	<style>
-		* {
-			margin: 0;
-			padding: 0;
-			box-sizing: border-box;
-		}
-
-		body {
-			background-color:black;
-		}
-	</style>
+	<link rel="stylesheet" href="./styles/style.css">
 </head>
 
 <body>
+	<h1 class="page-heading">Quick(Hoare) Sort Visualization.</h1>
 	<main>
 	</main>
+	
 	<script src="../p5.min.js"></script>
 	<script>
 		let rWidth = 5;
 		let states = [];
 		function setup() {
 			pixelDensity(1);
-			createCanvas(windowWidth - 10, windowHeight - 50);
+			createCanvas(windowWidth - 30, windowHeight - 70);
 			values = new Array(floor(width / rWidth));
 			for (let i = 0; i < values.length; i++) {
 				values[i] = random(height);
