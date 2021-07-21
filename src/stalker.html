@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="">
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Stalker.</title>
+	<link rel="stylesheet" href="./styles/style.css">
+	<script src="../p5.min.js"></script>
+</head>
+
+<body>
+	<h1 class="page-heading">Stalker.</h1>
+	<main>
+	</main>
+
+	<script>
+		class Mover {
+			constructor(x, y) {
+				// Creating a position vector
+				this.pos = createVector(x, y);
+				// Velocity vector in random direction
+				this.vel = p5.Vector.random2D();
+				// Giving velocity vector a random magnitude
+				this.vel.mult(random(3));
+			}
+
+			update() {
+				// Accelaration Vector in direction of vector it is following
+				this.acc = p5.Vector.sub(this.followthis, this.pos);
+
+				// Giving acc vector a random magnitude
+				// this.acc.setMag(random(5, 7));
+				this.acc.setMag(6);
+
+				// Adding Accelation to velocity
+				this.vel.add(this.acc);
+
+				// Limiting the magnitude of Velocity
+				this.vel.limit(random(16, 18));
+				// this.vel.limit(15);
+
+				// Adding Velocity to Position
+				this.pos.add(this.vel);
+			}
+
+			follow(followTo) {
+				// Giving a vector to follow
+				this.followthis = followTo;
+			}
+			show() {
+				ellipse(this.pos.x, this.pos.y, 32);
+			}
+		}
+
+		function setup() {
+			createCanvas(windowWidth - 50, windowHeight - 50);
+			mover1 = new Mover(width / 2, height / 2);
+			// mover2 = new Mover(width / 1.2, height / 1.2);
+		}
+
+		function draw() {
+			background(0);
+			stroke(color(255, 255, 255));
+			strokeWeight(2);
+			fill(color(0, 220, 255));
+			let mouse = createVector(mouseX, mouseY);
+			mover1.follow(mouse);
+			mover1.update();
+			mover1.show();
+		}
+	</script>
+</body>
+
+</html>

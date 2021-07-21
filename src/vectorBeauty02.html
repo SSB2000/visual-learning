@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="">
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Your Vectors.</title>
+	<link rel="stylesheet" href="./styles/style.css">
+	<script src="../p5.min.js"></script>
+</head>
+
+<body>
+	<h1 class="page-heading">Draw Something.</h1>
+	<main>
+	</main>
+
+	<script>
+		let vec;
+		let vectorLen;
+		function setup() {
+			let cnv = createCanvas(windowWidth - 50, windowHeight - 50);
+			background(0);
+		}
+
+		function draw() {
+			strokeWeight(1);
+			stroke(color(random(255), random(255), random(255)));
+			if (mouseIsPressed) {
+				line(width / 2, height / 2, mouseX, mouseY);
+			}
+		}
+
+		function drawLine() {
+		}
+	</script>
+</body>
+
+</html>

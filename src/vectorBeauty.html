@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="">
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Beautiful Vector Sphere.</title>
+	<link rel="stylesheet" href="./styles/style.css">
+	<script src="../p5.min.js"></script>
+</head>
+
+<body>
+	<h1 class="page-heading">Beautiful Sphere.</h1>
+	<main>
+	</main>
+
+	<script>
+		let vec;
+		let vectorLen;
+		function setup() {
+			createCanvas(windowWidth - 50, windowHeight - 50);
+			(width > height) ? vectorLen = height : vectorLen = width;
+			vectorLen = vectorLen/2 - 10;
+			background(0);
+		}
+		
+		function draw() {
+			translate(width/2, height/2);
+			strokeWeight(0.5);
+			stroke(color(random(255), random(255), random(255)));
+			vec = p5.Vector.random2D().mult(random(vectorLen));
+			line(0, 0, vec.x, vec.y);
+		}
+	</script>
+</body>
+
+</html>
