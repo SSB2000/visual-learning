@@ -19,6 +19,7 @@ body,
 html {
   height: 100%;
   background-color: var(--primary-background-clr);
+  background-image: url("../cool-background.png");
   font-size: var(--base-font-size);
   color: var(--base-font-clr);
 }
@@ -63,12 +64,12 @@ html {
   font-family: "Satoshi-Light";
   font-style: italic;
   font-size: 1.6em;
-  padding-bottom: .4em;
+  padding-bottom: 0.4em;
 }
 
 .container .list {
   font-size: 2em;
-  font-family: 'Satoshi-Medium';
+  font-family: "Satoshi-Medium";
   margin-top: 2em;
 }
 
@@ -76,12 +77,12 @@ html {
   border-bottom: 2px solid black;
   list-style-type: none;
   line-height: 1em;
-  margin: .5em 0;
+  margin: 0.5em 0;
 }
 
 .container .list .list-item .number {
   color: #0d6e67;
-  font-size: .6em;
+  font-size: 0.6em;
 }
 
 .container .list .list-item .link {

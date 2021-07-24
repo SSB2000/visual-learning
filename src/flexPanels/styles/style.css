@@ -1,0 +1,165 @@
+@import url("https://fonts.googleapis.com/css2?family=Raleway:wght@500&display=swap");
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+:root {
+  --bg-col: black;
+  --ft-col: white;
+  --ft-fm: "Raleway";
+}
+
+body, html {
+  background-color: var(--bg-col);
+  font-size: 16px;
+  color: var(--ft-col);
+  font-family: var(--ft-fm), sans-serif;
+}
+
+.panels {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  height: 100vh;
+  overflow: hidden;
+  -webkit-transition: cubic-bezier(0.075, 0.82, 0.165, 1);
+  transition: cubic-bezier(0.075, 0.82, 0.165, 1);
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+@media (min-width: 450px) {
+  .panels {
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: row;
+            flex-direction: row;
+  }
+}
+
+.panels .panel {
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  text-align: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  background-size: cover;
+  background-position: center;
+  -webkit-transition: all 500ms;
+  transition: all 500ms;
+  font-size: 1.6em;
+}
+
+.panels .panel :first-child {
+  -webkit-transform: translateX(-100%);
+          transform: translateX(-100%);
+}
+
+.panels .panel :last-child {
+  -webkit-transform: translateX(100%);
+          transform: translateX(100%);
+}
+
+.panels .panel * {
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+  -webkit-transition: -webkit-transform 500ms;
+  transition: -webkit-transform 500ms;
+  transition: transform 500ms;
+  transition: transform 500ms, -webkit-transform 500ms;
+  display: -ms-grid;
+  display: grid;
+  place-content: center;
+}
+
+@media (min-width: 450px) {
+  .panels .panel * {
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: row;
+            flex-direction: row;
+  }
+}
+
+@media (min-width: 450px) {
+  .panels .panel {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    font-size: 2.6em;
+  }
+  .panels .panel :first-child {
+    -webkit-transform: translateY(-100%);
+            transform: translateY(-100%);
+  }
+  .panels .panel :last-child {
+    -webkit-transform: translateY(100%);
+            transform: translateY(100%);
+  }
+}
+
+.panels .panel-open {
+  -webkit-box-flex: 6;
+      -ms-flex: 6;
+          flex: 6;
+  font-size: 2em;
+}
+
+.panels .panel-open :first-child {
+  -webkit-transform: translateX(0);
+          transform: translateX(0);
+}
+
+.panels .panel-open :last-child {
+  -webkit-transform: translateX(0);
+          transform: translateX(0);
+}
+
+@media (min-width: 450px) {
+  .panels .panel-open {
+    font-size: 3em;
+  }
+  .panels .panel-open :first-child {
+    -webkit-transform: translateY(0);
+            transform: translateY(0);
+  }
+  .panels .panel-open :last-child {
+    -webkit-transform: translateY(0);
+            transform: translateY(0);
+  }
+}
+
+.panels .panel1 {
+  background-image: url(../images/hands.jpg);
+}
+
+.panels .panel2 {
+  background-image: url(../images/destination.jpg);
+}
+
+.panels .panel3 {
+  background-image: url(../images/scisorrs.jpg);
+}
+
+.panels .panel4 {
+  background-image: url(../images/gay.jpg);
+}
+
+.panels .panel5 {
+  background-image: url(../images/woman.jpg);
+}
+/*# sourceMappingURL=style.css.map */

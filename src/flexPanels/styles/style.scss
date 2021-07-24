@@ -1,0 +1,95 @@
+*, 
+*::before,
+*::after {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Raleway:wght@500&display=swap');
+
+:root {
+	--bg-col: black;
+	--ft-col: white;
+	--ft-fm: "Raleway";
+}
+body, html {
+	background-color: var(--bg-col);
+	font-size: 16px;
+	color: var(--ft-col);
+	font-family: var(--ft-fm), sans-serif;
+}
+
+.panels {
+	display: flex;
+	height: 100vh;
+	overflow: hidden;
+	transition: cubic-bezier(0.075, 0.82, 0.165, 1);
+	flex-direction: column;
+	@media (min-width: 450px) {
+		flex-direction: row;
+	}
+	.panel {
+		flex: 1;
+		display: flex;
+		text-align: center;
+		align-items: center;
+		background-size: cover;
+		background-position: center;
+		transition: all 500ms;
+		font-size: 1.6em;
+		:first-child {
+			transform: translateX(-100%);
+		}
+		:last-child {
+			transform: translateX(100%);
+		}
+		
+		* {
+			flex: 1;
+			transition: transform 500ms;
+			display: grid;
+			place-content: center;
+			@media (min-width: 450px) {
+				flex-direction: row;
+			}
+		}
+
+		@media (min-width: 450px) {
+			flex-direction: column;
+			font-size: 2.6em;
+			:first-child {
+				transform: translateY(-100%);
+			}
+			:last-child {
+				transform: translateY(100%);
+			}
+		}
+	}
+
+	.panel-open {
+		flex: 6;
+		font-size: 2em;
+		:first-child {
+			transform: translateX(0);
+		}
+		:last-child {
+			transform: translateX(0);
+		}
+		@media (min-width: 450px) {
+			font-size: 3em;
+			:first-child {
+				transform: translateY(0);
+			}
+			:last-child {
+				transform: translateY(0);
+			}
+		}
+	}
+
+	.panel1 {background-image: url(../images/hands.jpg);}
+	.panel2 {background-image: url(../images/destination.jpg);}
+	.panel3 {background-image: url(../images/scisorrs.jpg);}
+	.panel4 {background-image: url(../images/gay.jpg);}
+	.panel5 {background-image: url(../images/woman.jpg);}
+}
