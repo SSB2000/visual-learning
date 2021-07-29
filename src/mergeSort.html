@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Merge Sort</title>
+	<script src="../p5.min.js"></script>
+	<link rel="stylesheet" href="./styles/style.css">
+</head>
+
+<body>
+	<h1 class="page-heading">Merge Sort Visualization.</h1>
+	<main>
+	</main>
+
+	<script>
+		var values = [];
+		var sections; // Number of sections
+		var sectionW = 5; // Width of every Section
+		var allSorted = true;
+		function setup() {
+			createCanvas(windowWidth - 50, windowHeight - 50)
+			sections = Math.floor(width / sectionW); // Calculate number of section
+
+			// Giving random value to every section
+			for (let i = 0; i < sections; i++) {
+				let value = Math.floor(random(height));
+				values[i] = new section(value, i);
+			}
+
+			// Sorting the values
+			mergeSort(values);
+		}
+		function draw() {
+			background(0);
+			allSorted = true;
+			for (let i = 0; i < values.length; i++) {
+				if (!values[i].isSorted) allSorted = false
+			}
+			for (let i = 0; i < values.length; i++) {
+				values[i].show(i);
+			}
+		}
+
+		// section object
+		section = function (value, i) {
+			this.value = value;
+
+			// Initial unsorted color
+			this.color = color(255, 255, 255);
+			this.isSorted = false;
+			this.show = function (i) {
+				this.isSorted ? fill(color(255, 0, 0)) : fill(this.color);
+				if (allSorted) fill(color(0, 255, 0));
+				rect(i * sectionW, height - this.value, sectionW, this.value);
+			}
+		}
+
+		async function merge(list, start, mid, end) {
+			await new Promise(r => setTimeout(r, 50));
+			let tempList = [];
+			let k = 0, l1 = start, l2 = mid + 1;
+			while (l1 <= mid && l2 <= end) {
+				if (list[l1].value <= list[l2].value) tempList[k++] = list[l1++];
+				else tempList[k++] = list[l2++];
+			}
+			while (l1 <= mid) tempList[k++] = list[l1++];
+			while (l2 <= end) tempList[k++] = list[l2++];
+
+			for (let i = start; i <= end; i++) {
+				list[i] = tempList[i - start];
+				list[i].isSorted = true;
+			}
+		}
+
+		async function mergeSort(list, start = 0, end = list.length - 1) {
+			if (start < end) {
+				const mid = Math.floor((start + end) / 2);
+				await mergeSort(list, start, mid);
+				await mergeSort(list, mid + 1, end);
+				await merge(list, start, mid, end);
+			}
+		}
+	</script>
+</body>
+
+</html>
