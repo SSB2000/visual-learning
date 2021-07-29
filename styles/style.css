@@ -10,9 +10,9 @@
 
 :root {
   --base-font-size: 16px;
-  --base-font-clr: black;
-  --github-link-clr: #5167f6;
-  --primary-background-clr: hsl(231, 89%, 93%);
+  --base-font-clr: rgb(255, 255, 255);
+  --github-link-clr: #318e94;
+  --primary-background-clr: hsl(242, 68%, 7%);
 }
 
 body,
@@ -36,7 +36,7 @@ html {
 .container .heading {
   position: relative;
   padding-bottom: 3em;
-  border-bottom: 2px solid black;
+  border-bottom: 2px solid white;
 }
 
 .container .heading h1 {
@@ -73,10 +73,11 @@ html {
 }
 
 .container .list .list-item {
-  border-bottom: 2px solid black;
+  border-bottom: 2px solid #787892;
   list-style-type: none;
   line-height: 1em;
   margin: 0.5em 0;
+  padding-bottom: 0.1em;
 }
 
 .container .list .list-item .number {
