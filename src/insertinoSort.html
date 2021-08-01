@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Merge Sort</title>
+	<script src="../p5.min.js"></script>
+	<link rel="stylesheet" href="./styles/style.css">
+</head>
+
+<body>
+	<h1 class="page-heading">Merge Sort Visualization.</h1>
+	<main>
+	</main>
+
+	<script>
+		var values = [];
+		var sections; // Number of sections
+		var sectionW = 15; // Width of every Section
+		var allSorted = false;
+		function setup() {
+			createCanvas(windowWidth - 50, windowHeight - 50)
+			sections = Math.floor(width / sectionW); // Calculate number of section
+
+			// Giving random value to every section
+			for (let i = 0; i < sections; i++) {
+				let value = Math.floor(random(height));
+				values[i] = new section(value, i);
+			}
+
+			// Sorting the values
+			insertionSort(values);
+
+		}
+		function draw() {
+			background(0);
+			for (let i = 0; i < values.length; i++) {
+				values[i].show(i);
+			}
+			if (allSorted) noLoop();
+		}
+
+		// section object
+		section = function (value, i) {
+			this.value = value;
+
+			this.color = color(255, 255, 255);
+			this.isSorted = false;
+			this.show = function (i) {
+				fill(this.color);
+				rect(i * sectionW, height - this.value, sectionW, this.value);
+			}
+		}
+
+		async function insertionSort(values) {
+			let i, index;
+
+			for (i = 1; i < values.length; i++) {
+				index = i;
+
+				while (index > 0 && values[index].value < values[index - 1].value) {
+					values[index].color = color(255, 0, 0);
+					await swap(values, index, index - 1);
+					index--;
+				}
+				values[index].color = color(255, 255, 255);
+			}
+			for (i = 0; i < values.length; i++) values[i].color = color(0, 255, 0);
+			noStroke();
+			allSorted = true;
+
+		}
+
+		async function swap(values, i, j) {
+			await new Promise(r => setTimeout(r, 0));
+			const tmp = values[i];
+			values[i] = values[j];
+			values[j] = tmp;
+		}
+
+	</script>
+</body>
+
+</html>
